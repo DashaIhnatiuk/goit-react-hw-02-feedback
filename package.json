@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/DashaIhnatiuk/goit-react-hw-02-feedback/issues"
   },
-  "homepage": "https://github.com/DashaIhnatiuk/goit-react-hw-02-feedback.github.io",
+  "homepage": "https://DashaIhnatiuk.github.io/goit-react-hw-02-feedback",
   "eslintConfig": {
     "extends": [
       "react-app",
