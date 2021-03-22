@@ -6,22 +6,20 @@ import Notification from './Components/Notification';
 
 class App extends Component {
 
-    constructor(){
-        super();
-        this.handleButtonClick = this.handleButtonClick.bind(this);
+   
 
-        this.state = {
+        state = {
             good: 0,
             neutral: 0,
             bad: 0
           };       
    
-    }
+    
 
-    handleButtonClick(value){
-        this.setState({
-            [value]: this.state[value]+1,
-        });      
+    handleButtonClick = value => {
+        this.setState((prevState) => ({
+            [value]: prevState[value]+1,
+        }));      
     };
     
 
@@ -33,19 +31,13 @@ class App extends Component {
         if(this.state.good===0){
             return 0;
         }
-        return ((this.state.good/(this.state.good+this.state.neutral+this.state.bad))*100).toFixed(2);
-    }
-
-    checkFeedbackGiven(){
-        if(this.state.good===0 && this.state.neutral===0 && this.state.bad===0){
-            console.log("FALSE");
-            return false;
-        }
-        console.log("TRUE");
-        return true;
+        return ((this.state.good/this.countTotalFeedback())*100).toFixed(2);
     }
 
     render() {
+const{good, neutral, bad} = this.state;
+const total = this.countTotalFeedback();
+
         return (
             <div>
                 <Section title="Please leave your feedback">
@@ -56,10 +48,10 @@ class App extends Component {
                 </Section>
                 <Section title="Statistics:">
 
-                {this.checkFeedbackGiven() ? <Statistics
-                    good={this.state.good}
-                    neutral={this.state.neutral}
-                    bad={this.state.bad}
+                {total>0 ? <Statistics
+                    good={good}
+                    neutral={neutral}
+                    bad={bad}
                     total={this.countTotalFeedback()}
                     positivePercentage={this.countPositiveFeedbackPercentage()}
                     /> : <Notification message="No feedback given"/>}                   
