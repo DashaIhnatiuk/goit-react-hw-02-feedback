@@ -1,6 +1,6 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
-import style from './FeedbackOptions.module.css';
+import { Component } from "react";
+import PropTypes from "prop-types";
+import style from "./FeedbackOptions.module.css";
 
 class FeedbackOptions extends Component {
   static propTypes = {
@@ -14,8 +14,9 @@ class FeedbackOptions extends Component {
 
     return (
       <div>
-        {items.map(item => (
-          <button className={style.button}
+        {items.map((item) => (
+          <button
+            className={style.button}
             type="button"
             key={item}
             onClick={() => {
